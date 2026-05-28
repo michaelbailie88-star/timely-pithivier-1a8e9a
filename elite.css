@@ -1,0 +1,445 @@
+/* ══════════════════════════════════════════════════════════════
+   adaptED × CampED — Elite Visual Elevation
+   Premium aesthetic refinements, smooth transitions, 
+   and polished micro-interactions.
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── SMOOTH SCROLL ── */
+html{scroll-behavior:smooth}
+
+/* ── PREMIUM SCROLLBAR ── */
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:100px}
+::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,0.2)}
+html[data-theme="light"] ::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.12)}
+html[data-theme="light"] ::-webkit-scrollbar-thumb:hover{background:rgba(0,0,0,0.2)}
+
+/* ── BUTTERY TRANSITION PRESETS ── */
+:root{
+  --elite-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --elite-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --elite-spring: cubic-bezier(0.34, 1.3, 0.2, 1);
+  --elite-glass: rgba(255,255,255,0.04);
+  --elite-glass-border: rgba(255,255,255,0.08);
+  --elite-glow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+/* ══════════════════════════════════════════════════════
+   LANDING PAGE (index.html) ENHANCEMENTS
+   ══════════════════════════════════════════════════════ */
+
+/* Premium hero glow effect */
+.hero-title{
+  position:relative;
+}
+.hero-title::after{
+  content:'';
+  position:absolute;
+  bottom:-8px;left:0;right:0;
+  height:3px;
+  background:linear-gradient(90deg,transparent,var(--a),transparent);
+  border-radius:100px;
+  opacity:0.3;
+  width:60%;
+  margin:0 auto;
+}
+
+/* Brand cards — premium glass */
+.brand-card{
+  background:rgba(255,255,255,0.03) !important;
+  backdrop-filter:blur(12px) !important;
+  -webkit-backdrop-filter:blur(12px) !important;
+  border:1px solid rgba(255,255,255,0.06) !important;
+  transition:all 0.4s var(--elite-bounce) !important;
+}
+.brand-card:hover{
+  transform:translateY(-8px) scale(1.02) !important;
+  border-color:rgba(232,96,26,0.2) !important;
+  box-shadow:0 24px 60px -12px rgba(232,96,26,0.2),
+             0 0 0 1px rgba(232,96,26,0.05) !important;
+}
+
+/* Pricing cards — refined depth */
+#pricing [style*="border-radius:20px"]{
+  transition:transform 0.35s var(--elite-bounce), 
+              box-shadow 0.35s var(--elite-smooth),
+              border-color 0.25s var(--elite-smooth) !important;
+}
+#pricing [style*="border-radius:20px"]:hover{
+  transform:translateY(-8px) scale(1.01) !important;
+}
+#pricing [style*="background:var(--ink)"]{
+  transform:translateY(-4px) !important;
+}
+#pricing [style*="background:var(--ink)"]:hover{
+  transform:translateY(-10px) scale(1.02) !important;
+  box-shadow:0 32px 80px -16px rgba(232,96,26,0.25) !important;
+}
+
+/* CTA buttons — refined interaction */
+.btn-primary, .nav-cta{
+  transition:transform 0.3s var(--elite-bounce),
+              box-shadow 0.3s var(--elite-smooth) !important;
+}
+.btn-primary:hover, .nav-cta:hover{
+  transform:translateY(-2px) scale(1.02) !important;
+  box-shadow:0 12px 40px -8px rgba(232,96,26,0.35) !important;
+}
+.btn-primary:active, .nav-cta:active{
+  transform:translateY(0) scale(0.97) !important;
+}
+
+/* Nav — refined glass */
+nav{
+  backdrop-filter:blur(20px) !important;
+  -webkit-backdrop-filter:blur(20px) !important;
+}
+
+/* Demo activity card — refined motion */
+.activity-card{
+  animation:borderPulse 4s ease infinite;
+  transition:transform 0.35s var(--elite-bounce),
+              box-shadow 0.35s var(--elite-smooth) !important;
+}
+.activity-card:hover{
+  transform:translateY(-4px) scale(1.01) !important;
+}
+
+/* Feature cards staggered entrance */
+.feature{
+  transition:all 0.4s var(--elite-smooth);
+}
+.feature:hover{
+  transform:translateY(-4px);
+}
+
+/* Google Translate bar — better styling */
+#google_translate_element{
+  opacity:0.85;
+  transition:opacity 0.3s;
+}
+#google_translate_element:hover{
+  opacity:1;
+}
+
+/* ══════════════════════════════════════════════════════
+   DASHBOARD (app.html) ENHANCEMENTS
+   ══════════════════════════════════════════════════════ */
+
+/* Header — deeper glass */
+.hdr, #header{
+  backdrop-filter:blur(20px) !important;
+  -webkit-backdrop-filter:blur(20px) !important;
+  border-bottom:1px solid rgba(255,255,255,0.06) !important;
+  transition:background 0.4s var(--elite-smooth) !important;
+}
+
+/* Brand toggle — refinement */
+.toggle{
+  box-shadow:0 6px 20px -6px rgba(0,0,0,0.2) !important;
+  transition:box-shadow 0.3s var(--elite-smooth);
+}
+.toggle:hover{
+  box-shadow:0 8px 28px -6px rgba(0,0,0,0.3) !important;
+}
+.toggle::before{
+  transition:transform 0.4s var(--elite-bounce) !important;
+}
+.toggle button{
+  transition:color 0.35s var(--elite-smooth), 
+              transform 0.2s var(--elite-bounce) !important;
+}
+.toggle button:active{
+  transform:scale(0.93);
+}
+
+/* Bottom bar — premium glass */
+.bottom-bar{
+  backdrop-filter:blur(20px) !important;
+  -webkit-backdrop-filter:blur(20px) !important;
+  border-top:1px solid rgba(255,255,255,0.06) !important;
+  padding:8px 6px !important;
+  transition:background 0.4s var(--elite-smooth) !important;
+}
+
+/* Bottom nav buttons */
+.bb-btn{
+  transition:transform 0.25s var(--elite-bounce),
+              color 0.2s var(--elite-smooth) !important;
+  position:relative;
+}
+.bb-btn:hover{
+  transform:translateY(-2px);
+}
+.bb-btn:active{
+  transform:translateY(1px) scale(0.95);
+}
+.bb-btn.active::after{
+  content:'';
+  position:absolute;
+  bottom:-2px;left:50%;
+  transform:translateX(-50%);
+  width:20px;height:2px;
+  background:var(--accent);
+  border-radius:100px;
+  animation:bbActiveIn 0.3s var(--elite-bounce);
+}
+@keyframes bbActiveIn{
+  from{width:0;opacity:0}
+  to{width:20px;opacity:1}
+}
+
+/* Activity cards — elite glass + motion */
+.card{
+  background:rgba(10,12,28,0.6) !important;
+  backdrop-filter:blur(12px) !important;
+  -webkit-backdrop-filter:blur(12px) !important;
+  border:1px solid rgba(255,255,255,0.06) !important;
+  transition:transform 0.35s var(--elite-bounce),
+              box-shadow 0.4s var(--elite-smooth),
+              border-color 0.3s var(--elite-smooth) !important;
+  will-change:transform;
+}
+.card:hover{
+  transform:translateY(-6px) scale(1.02) !important;
+  box-shadow:0 20px 48px -12px rgba(0,0,0,0.5),
+             0 0 0 1px rgba(255,255,255,0.05) !important;
+  border-color:rgba(255,255,255,0.12) !important;
+}
+.card:active{
+  transform:translateY(2px) scale(0.97) !important;
+}
+
+/* Light mode card refinement */
+html[data-theme="light"] .card{
+  background:rgba(255,255,255,0.7) !important;
+  backdrop-filter:blur(12px) !important;
+  border-color:rgba(0,0,0,0.06) !important;
+}
+html[data-theme="light"] .card:hover{
+  box-shadow:0 16px 40px -12px rgba(0,0,0,0.12) !important;
+  border-color:rgba(0,0,0,0.12) !important;
+}
+
+/* Filter chips — better feel */
+.chip{
+  transition:all 0.25s var(--elite-bounce) !important;
+}
+.chip:hover:not(.active){
+  transform:translateY(-1px);
+  box-shadow:0 4px 12px -4px rgba(0,0,0,0.15);
+}
+.chip:active{
+  transform:scale(0.95);
+}
+
+/* Tier filter cards — premium touch */
+.tier-card{
+  transition:all 0.3s var(--elite-bounce) !important;
+}
+.tier-card:hover:not(.active){
+  transform:translateY(-2px);
+  box-shadow:0 6px 16px -6px rgba(0,0,0,0.2);
+}
+.tier-card:active{
+  transform:scale(0.95);
+}
+
+/* Search field — refinement */
+.search input{
+  transition:border-color 0.25s var(--elite-smooth),
+              box-shadow 0.25s var(--elite-smooth) !important;
+}
+.search input:focus{
+  box-shadow:0 0 0 3px rgba(232,96,26,0.15) !important;
+}
+
+/* Stats — smooth presence */
+.stat{
+  transition:all 0.3s var(--elite-bounce) !important;
+}
+.stat:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 20px -6px rgba(0,0,0,0.12);
+}
+
+/* Premium mood bar */
+#moodBar{
+  transition:background 0.4s var(--elite-smooth) !important;
+}
+.mood-bar-opt{
+  transition:all 0.3s var(--elite-bounce) !important;
+}
+.mood-bar-opt:hover{
+  transform:translateY(-2px) !important;
+  box-shadow:0 6px 16px -6px rgba(0,0,0,0.2);
+}
+
+/* AI Chat — refined */
+#aiChatPanel{
+  transition:transform 0.4s var(--elite-bounce) !important;
+}
+.ai-msg{
+  animation:msgIn 0.3s var(--elite-bounce) !important;
+}
+@keyframes msgIn{
+  from{opacity:0;transform:translateY(8px) scale(0.97)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+/* Hover card glow inside modals */
+.modal [style*="border-radius"]{
+  transition:all 0.25s var(--elite-smooth);
+}
+.modal [style*="border-radius"]:hover{
+  transform:translateY(-2px);
+}
+
+/* Supply planner refined */
+.sp-mode-card{
+  transition:all 0.35s var(--elite-bounce) !important;
+}
+.sp-mode-card:active{
+  transform:scale(0.96) !important;
+}
+.sp-chip{
+  transition:all 0.25s var(--elite-bounce) !important;
+}
+.sp-chip:active:not(.sel){
+  transform:scale(0.95);
+}
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE ENHANCEMENTS
+   ══════════════════════════════════════════════════════ */
+
+/* Premium responsive typography */
+@media(max-width:480px){
+  .brand{font-size:15px !important}
+  .brand-sub{font-size:7px !important}
+  .stat-n{font-size:15px !important}
+  .stat-l{font-size:8px !important}
+  .card{padding:12px !important;min-height:150px !important}
+  .grid{gap:10px !important;padding:0 12px 100px !important}
+  .search input{font-size:12px !important;padding:10px 12px 10px 36px !important}
+  .chip{padding:6px 10px !important;font-size:10px !important}
+  .tier-card{padding:6px 10px !important;min-width:56px !important}
+  .tier-card .em{font-size:14px !important}
+  .tier-card .lbl{font-size:8px !important}
+}
+
+/* Tablet refinement */
+@media(min-width:481px) and (max-width:767px){
+  .grid{gap:11px !important}
+  .card{min-height:165px !important}
+}
+
+/* Desktop — wider cards */
+@media(min-width:1200px){
+  .grid{grid-template-columns:repeat(4,1fr) !important;gap:14px !important;padding:0 24px 100px !important}
+  .card{padding:16px !important;min-height:200px !important}
+}
+
+/* Large desktop */
+@media(min-width:1600px){
+  .grid{grid-template-columns:repeat(5,1fr) !important;max-width:1800px !important;margin:0 auto !important}
+}
+
+/* ══════════════════════════════════════════════════════
+   PREMIUM KEYFRAME ANIMATIONS
+   ══════════════════════════════════════════════════════ */
+
+/* Smooth reveal animation */
+@keyframes eliteReveal{
+  from{opacity:0;transform:translateY(20px) scale(0.98)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+.elite-reveal{
+  animation:eliteReveal 0.6s var(--elite-bounce) both;
+}
+.elite-reveal-d1{animation-delay:0.05s}
+.elite-reveal-d2{animation-delay:0.1s}
+.elite-reveal-d3{animation-delay:0.15s}
+.elite-reveal-d4{animation-delay:0.2s}
+
+/* Shimmer loading skeleton */
+@keyframes eliteShimmer{
+  0%{background-position:-200% 0}
+  100%{background-position:200% 0}
+}
+.elite-skeleton{
+  background:linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.03) 75%);
+  background-size:200% 100%;
+  animation:eliteShimmer 1.5s ease infinite;
+  border-radius:8px;
+}
+
+/* Smooth page fade-in */
+#app{
+  animation:eliteReveal 0.5s var(--elite-bounce);
+}
+
+/* ══════════════════════════════════════════════════════
+   INDEX PAGE SPECIFIC ENHANCEMENTS
+   ══════════════════════════════════════════════════════ */
+
+/* Section spacing refinements */
+section{
+  transition:opacity 0.5s var(--elite-smooth);
+}
+
+/* Problem section glass */
+.problem{
+  backdrop-filter:blur(4px);
+}
+
+/* Testimonial / quote cards */
+blockquote, .testimonial, [class*="quote"]{
+  transition:all 0.3s var(--elite-smooth);
+  border-left:3px solid var(--a);
+}
+blockquote:hover, [class*="quote"]:hover{
+  transform:translateX(4px);
+}
+
+/* Footer links refined */
+footer a{
+  transition:all 0.25s var(--elite-smooth);
+  position:relative;
+}
+footer a::after{
+  content:'';
+  position:absolute;
+  bottom:-2px;left:0;
+  width:0;height:1px;
+  background:var(--a);
+  transition:width 0.3s var(--elite-smooth);
+}
+footer a:hover::after{
+  width:100%;
+}
+
+/* FAQ items smooth open/close */
+.faq-q{
+  transition:all 0.3s var(--elite-smooth);
+}
+.faq-q:hover{
+  padding-left:4px;
+}
+.faq-a{
+  transition:max-height 0.4s var(--elite-bounce),
+              opacity 0.3s var(--elite-smooth);
+}
+
+/* ══════════════════════════════════════════════════════
+   ACCESSIBILITY / REDUCED MOTION
+   ══════════════════════════════════════════════════════ */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:0.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:0.01ms !important;
+  }
+  html{scroll-behavior:auto}
+}
