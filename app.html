@@ -208,6 +208,23 @@ body{top:0!important}
 .sp-calm-body{font-size:12px;color:rgba(255,255,255,0.5);line-height:1.6}
 .sp-qr-wrap{width:180px;height:180px;background:#fff;border-radius:14px;padding:10px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center}
 
+<!-- ── WEATHER PERMISSION EXPLAINER MODAL ── -->
+<div class="weather-modal-bg" id="weatherModal">
+  <div class="weather-modal">
+    <div class="weather-modal-icon">🌤️</div>
+    <h2 class="weather-modal-title">Weather-Based <em>Activity Suggestions</em></h2>
+    <p class="weather-modal-desc">We can show you the perfect indoor or outdoor activity based on today&#39;s weather.</p>
+    <div class="weather-modal-features">
+      <div class="weather-feat"><span class="wf-icon">☀️</span><span class="wf-text">Sunny day outdoor activities</span></div>
+      <div class="weather-feat"><span class="wf-icon">🌧️</span><span class="wf-text">Rainy day indoor alternatives</span></div>
+      <div class="weather-feat"><span class="wf-icon">❄️</span><span class="wf-text">Cold weather indoor play ideas</span></div>
+    </div>
+    <button class="weather-allow-btn" id="weatherAllowBtn" onclick="requestWeatherAccess()">Enable Weather Suggestions</button>
+    <button class="weather-skip-btn" onclick="dismissWeatherModal()">Not now</button>
+  </div>
+</div>
+
+
 /* ── WEATHER PERMISSION SHEET ── */
 .wxs-step{display:flex;gap:12px;align-items:flex-start;margin-bottom:13px;padding:0 20px}
 .wxs-n{width:26px;height:26px;border-radius:50%;background:rgba(0,136,255,0.15);border:1px solid rgba(0,136,255,0.3);color:#60a5fa;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
@@ -820,16 +837,16 @@ html[data-theme="light"] #themeToggleBtn::after{left:21px;background:#f97316}
   content:'';position:absolute;inset:0;
   background:linear-gradient(180deg,rgba(255,255,255,0.12) 0%,transparent 100%);
 }
-.demo-btn:hover{transform:translateY(-3px) scale(1.04);color:#fff;text-decoration:none}
-.demo-btn:active{transform:scale(0.97)}
-.demo-btn:visited{color:#fff;text-decoration:none}
-.demo-btn .demo-em{font-size:20px;line-height:1;filter:drop-shadow(0 0 6px currentColor)}
-.demo-btn .demo-lbl{font-size:9px;font-weight:800;letter-spacing:.1em;opacity:.8}
-.demo-btn.t1{background:linear-gradient(135deg,#1a3a6e,#2563eb);box-shadow:0 4px 20px -6px rgba(37,99,235,0.6);--gc:rgba(37,99,235,0.4)}
-.demo-btn.t2{background:linear-gradient(135deg,#7c2d12,#ea580c);box-shadow:0 4px 20px -6px rgba(234,88,12,0.6);--gc:rgba(234,88,12,0.4)}
-.demo-btn.t3{background:linear-gradient(135deg,#4c1d95,#7c3aed);box-shadow:0 4px 20px -6px rgba(124,58,237,0.6);--gc:rgba(124,58,237,0.4)}
-.demo-btn.t4{background:linear-gradient(135deg,#14532d,#16a34a);box-shadow:0 4px 20px -6px rgba(22,163,74,0.6);--gc:rgba(22,163,74,0.4)}
-.demo-btn:hover{animation:glowPulse 1s ease infinite}
+.lock-demo-btn:hover{transform:translateY(-3px) scale(1.04);color:#fff;text-decoration:none}
+.lock-demo-btn:active{transform:scale(0.97)}
+.lock-demo-btn:visited{color:#fff;text-decoration:none}
+.lock-demo-btn .lock-demo-em{font-size:20px;line-height:1;filter:drop-shadow(0 0 6px currentColor)}
+.lock-demo-btn .lock-demo-lbl{font-size:9px;font-weight:800;letter-spacing:.1em;opacity:.8}
+.lock-demo-btn.lock-t1{background:linear-gradient(135deg,#1a3a6e,#2563eb);box-shadow:0 4px 20px -6px rgba(37,99,235,0.6);--gc:rgba(37,99,235,0.4)}
+.lock-demo-btn.lock-t2{background:linear-gradient(135deg,#7c2d12,#ea580c);box-shadow:0 4px 20px -6px rgba(234,88,12,0.6);--gc:rgba(234,88,12,0.4)}
+.lock-demo-btn.lock-t3{background:linear-gradient(135deg,#4c1d95,#7c3aed);box-shadow:0 4px 20px -6px rgba(124,58,237,0.6);--gc:rgba(124,58,237,0.4)}
+.lock-demo-btn.lock-t4{background:linear-gradient(135deg,#14532d,#16a34a);box-shadow:0 4px 20px -6px rgba(22,163,74,0.6);--gc:rgba(22,163,74,0.4)}
+.lock-demo-btn:hover{animation:glowPulse 1s ease infinite}
 
 /* TIER BUY CARDS */
 .gate-tiers{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
@@ -1736,35 +1753,35 @@ html[data-theme="light"] #themeToggleBtn::after{left:21px;background:#f97316}
 
 /* ── GATE BUTTONS — EACH TIER ITS OWN NEON ── */
 .demo-btn{transition:all 0.2s ease!important}
-.demo-btn.t1{
+.lock-demo-btn.lock-t1{
   background:linear-gradient(135deg,rgba(0,120,255,0.18),rgba(0,200,255,0.08))!important;
   border:1.5px solid rgba(0,180,255,0.85)!important;
   box-shadow:0 0 12px rgba(0,180,255,0.55),0 0 32px rgba(0,180,255,0.28),inset 0 0 14px rgba(0,180,255,0.08)!important;
   color:#fff!important;text-shadow:0 0 10px rgba(0,210,255,0.9)!important;
   animation:floatSlow 6s ease-in-out infinite 0s!important;
 }
-.demo-btn.t2{
+.lock-demo-btn.lock-t2{
   background:linear-gradient(135deg,rgba(255,80,0,0.18),rgba(255,0,80,0.08))!important;
   border:1.5px solid rgba(255,90,0,0.85)!important;
   box-shadow:0 0 12px rgba(255,90,0,0.55),0 0 32px rgba(255,90,0,0.28),inset 0 0 14px rgba(255,90,0,0.08)!important;
   color:#fff!important;text-shadow:0 0 10px rgba(255,130,0,0.9)!important;
   animation:floatSlow 6.5s ease-in-out infinite 0.5s!important;
 }
-.demo-btn.t3{
+.lock-demo-btn.lock-t3{
   background:linear-gradient(135deg,rgba(180,0,255,0.18),rgba(100,0,255,0.08))!important;
   border:1.5px solid rgba(190,0,255,0.85)!important;
   box-shadow:0 0 12px rgba(180,0,255,0.55),0 0 32px rgba(180,0,255,0.28),inset 0 0 14px rgba(180,0,255,0.08)!important;
   color:#fff!important;text-shadow:0 0 10px rgba(210,0,255,0.9)!important;
   animation:floatSlow 7s ease-in-out infinite 1s!important;
 }
-.demo-btn.t4{
+.lock-demo-btn.lock-t4{
   background:linear-gradient(135deg,rgba(0,255,120,0.18),rgba(0,180,80,0.08))!important;
   border:1.5px solid rgba(0,255,130,0.85)!important;
   box-shadow:0 0 12px rgba(0,255,120,0.55),0 0 32px rgba(0,255,120,0.28),inset 0 0 14px rgba(0,255,120,0.08)!important;
   color:#fff!important;text-shadow:0 0 10px rgba(0,255,150,0.9)!important;
   animation:floatSlow 6s ease-in-out infinite 1.5s!important;
 }
-.demo-btn:hover{
+.lock-demo-btn:hover{
   filter:brightness(1.35) saturate(1.2)!important;
   transform:translateY(-5px) scale(1.06)!important;
 }
@@ -2247,10 +2264,11 @@ html,body,#app{
 
 <!-- ── ONBOARDING ── -->
 <div class="onboard-bg" id="onboardGate">
-  <div class="onboard-card">
+  <div class="onboard-card elite-onboard">
     <div class="ob-progress">
       <div class="ob-dot done" id="ob1dot"></div>
       <div class="ob-dot" id="ob2dot"></div>
+      <div class="ob-dot" id="ob2dot5"></div>
       <div class="ob-dot" id="ob3dot"></div>
     </div>
     <div class="ob-step active" id="obStep1">
@@ -2260,36 +2278,37 @@ html,body,#app{
       <input class="eg-input" id="egEmail" type="email" placeholder="Work email (for free activity packs)" autocomplete="email" style="margin-bottom:14px">
       <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:14px;text-align:center">No spam · Unsubscribe anytime</div>
       <div class="ob-options">
-        <button class="ob-opt" data-val="ece" onclick="obSelect(1,this,'ece')">👶 Early Childhood Educator</button>
-        <button class="ob-opt" data-val="camp" onclick="obSelect(1,this,'camp')">🏕️ Camp Counselor / Director</button>
-        <button class="ob-opt" data-val="ot" onclick="obSelect(1,this,'ot')">🧘 OT / Therapist / Clinician</button>
-        <button class="ob-opt" data-val="teacher" onclick="obSelect(1,this,'teacher')">🏫 Classroom Teacher</button>
-        <button class="ob-opt" data-val="parent" onclick="obSelect(1,this,'parent')">🏠 Parent / Caregiver</button>
-        <button class="ob-opt" data-val="youth" onclick="obSelect(1,this,'youth')">🎒 Youth Worker</button>
+        <button class="ob-opt elite-ob-opt elite-ob-opt" data-val="ece" onclick="obSelect(1,this,'ece')"><span class="ob-opt-em">👶</span><span class="ob-opt-lbl">Early Childhood Educator</span></button>
+        <button class="ob-opt elite-ob-opt elite-ob-opt" data-val="camp" onclick="obSelect(1,this,'camp')"><span class="ob-opt-em">🏕️</span><span class="ob-opt-lbl">Camp Counselor / Director</span></button>
+        <button class="ob-opt elite-ob-opt elite-ob-opt" data-val="ot" onclick="obSelect(1,this,'ot')"><span class="ob-opt-em">🧘</span><span class="ob-opt-lbl">OT / Therapist / Clinician</span></button>
+        <button class="ob-opt elite-ob-opt elite-ob-opt" data-val="teacher" onclick="obSelect(1,this,'teacher')"><span class="ob-opt-em">🏫</span><span class="ob-opt-lbl">Classroom Teacher</span></button>
+        <button class="ob-opt elite-ob-opt elite-ob-opt" data-val="parent" onclick="obSelect(1,this,'parent')"><span class="ob-opt-em">🏠</span><span class="ob-opt-lbl">Parent / Caregiver</span></button>
+        <button class="ob-opt elite-ob-opt elite-ob-opt" data-val="youth" onclick="obSelect(1,this,'youth')"><span class="ob-opt-em">🎒</span><span class="ob-opt-lbl">Youth Worker</span></button>
       </div>
     </div>
     <div class="ob-step" id="obStep2">
       <div class="ob-q">Age group you work with?</div>
       <div class="ob-sub">We'll surface the most relevant activities first.</div>
       <div class="ob-options">
-        <button class="ob-opt" onclick="obSelect(2,this,'0-3')">🍼 Babies & Toddlers (0–3)</button>
-        <button class="ob-opt" onclick="obSelect(2,this,'3-5')">🌈 Preschool (3–5)</button>
-        <button class="ob-opt" onclick="obSelect(2,this,'5-10')">📚 School-age (5–10)</button>
-        <button class="ob-opt" onclick="obSelect(2,this,'10-14')">🎯 Tweens (10–14)</button>
-        <button class="ob-opt" onclick="obSelect(2,this,'14-18')">🎒 Teens (14–18)</button>
-        <button class="ob-opt" onclick="obSelect(2,this,'mixed')">🔀 Mixed ages</button>
+        <button class="ob-opt elite-ob-opt elite-ob-opt" onclick="obSelect(2,this,'0-3')"><span class="ob-opt-em">🍼</span><span class="ob-opt-lbl">Babies & Toddlers (0–3)</span></button>
+        <button class="ob-opt elite-ob-opt elite-ob-opt" onclick="obSelect(2,this,'3-5')"><span class="ob-opt-em">🌈</span><span class="ob-opt-lbl">Preschool (3–5)</span></button>
+        <button class="ob-opt elite-ob-opt elite-ob-opt" onclick="obSelect(2,this,'5-10')"><span class="ob-opt-em">📚</span><span class="ob-opt-lbl">School-age (5–10)</span></button>
+        <button class="ob-opt elite-ob-opt elite-ob-opt" onclick="obSelect(2,this,'10-14')"><span class="ob-opt-em">🎯</span><span class="ob-opt-lbl">Tweens (10–14)</span></button>
+        <button class="ob-opt elite-ob-opt elite-ob-opt" onclick="obSelect(2,this,'14-18')"><span class="ob-opt-em">🎒</span><span class="ob-opt-lbl">Teens (14–18)</span></button>
+        <button class="ob-opt elite-ob-opt elite-ob-opt" onclick="obSelect(2,this,'mixed')"><span class="ob-opt-em">🔀</span><span class="ob-opt-lbl">Mixed ages</span></button>
       </div>
     </div>
+    <div class="ob-step" id="obStep25"><div class="ob-q">Which curriculum alignment do you need?</div><div class="ob-sub">Personalises labels for your setting.</div><div class="ob-options"><button class="ob-opt elite-ob-opt elite-ob-opt" onclick="obSelect(3,this,'p2l')"><span class="ob-opt-em">🏃</span><span class="ob-opt-lbl">YMCA Play to Learn</span></button><button class="ob-opt elite-ob-opt elite-ob-opt" onclick="obSelect(3,this,'sb')"><span class="ob-opt-em">🏫</span><span class="ob-opt-lbl">Ontario School Board</span></button><button class="ob-opt elite-ob-opt elite-ob-opt" onclick="obSelect(3,this,'general')"><span class="ob-opt-em">🌍</span><span class="ob-opt-lbl">Global Standard</span></button></div></div>
     <div class="ob-step" id="obStep3">
       <div class="ob-q">Where do you work?</div>
       <div class="ob-sub">Last one — promise.</div>
       <div class="ob-options">
-        <button class="ob-opt" onclick="obSelect(3,this,'childcare')">🏢 Childcare / Daycare</button>
-        <button class="ob-opt" onclick="obSelect(3,this,'camp')">🏕️ Camp / Recreation</button>
-        <button class="ob-opt" onclick="obSelect(3,this,'school')">🏫 School / Classroom</button>
-        <button class="ob-opt" onclick="obSelect(3,this,'clinic')">🩺 Clinic / Practice</button>
-        <button class="ob-opt" onclick="obSelect(3,this,'home')">🏠 Home</button>
-        <button class="ob-opt" onclick="obSelect(3,this,'community')">🌍 Community / Youth Program</button>
+        <button class="ob-opt elite-ob-opt elite-ob-opt" onclick="obSelect(3,this,'childcare')">🏢 Childcare / Daycare</button>
+        <button class="ob-opt elite-ob-opt elite-ob-opt" onclick="obSelect(3,this,'camp')">🏕️ Camp / Recreation</button>
+        <button class="ob-opt elite-ob-opt elite-ob-opt" onclick="obSelect(3,this,'school')">🏫 School / Classroom</button>
+        <button class="ob-opt elite-ob-opt elite-ob-opt" onclick="obSelect(3,this,'clinic')">🩺 Clinic / Practice</button>
+        <button class="ob-opt elite-ob-opt elite-ob-opt" onclick="obSelect(3,this,'home')">🏠 Home</button>
+        <button class="ob-opt elite-ob-opt elite-ob-opt" onclick="obSelect(3,this,'community')">🌍 Community / Youth Program</button>
       </div>
       <button class="ob-next" onclick="finishOnboarding()">Start Exploring →</button>
       <button class="ob-skip" onclick="finishOnboarding()">Skip setup</button>
@@ -2383,10 +2402,10 @@ html,body,#app{
     <input id="keyInput" style="display:none" readonly>
     <div class="gate-divider">Try free · 1-click demo</div>
     <div class="gate-demo-row">
-      <button class="demo-btn t1" onclick="tryDemo('starter')"><span class="demo-em">📚</span><span class="demo-lbl">STARTER</span></button>
-      <button class="demo-btn t2" onclick="tryDemo('pro')"><span class="demo-em">⚡</span><span class="demo-lbl">PRO</span></button>
-      <button class="demo-btn t3" onclick="tryDemo('elite')"><span class="demo-em">💎</span><span class="demo-lbl">ELITE</span></button>
-      <button class="demo-btn t4" onclick="tryDemo('school')"><span class="demo-em">🏆</span><span class="demo-lbl">SCHOOL</span></button>
+      <button class="lock-demo-btn lock-t1" onclick="tryDemo('starter')"><span class="lock-demo-em">📚</span><span class="lock-demo-lbl">STARTER</span></button>
+      <button class="lock-demo-btn lock-t2" onclick="tryDemo('pro')"><span class="lock-demo-em">⚡</span><span class="lock-demo-lbl">PRO</span></button>
+      <button class="lock-demo-btn lock-t3" onclick="tryDemo('elite')"><span class="lock-demo-em">💎</span><span class="lock-demo-lbl">ELITE</span></button>
+      <button class="lock-demo-btn lock-t4" onclick="tryDemo('school')"><span class="lock-demo-em">🏆</span><span class="lock-demo-lbl">SCHOOL</span></button>
     </div>
     <div class="gate-divider">Buy a tier · unlock instantly after purchase</div>
     <div class="gate-tiers">
@@ -2562,8 +2581,8 @@ html,body,#app{
     <div id="collectionsWrap" class="coll-list"></div>
   </div>
   <!-- ── AI PLANNING ASSISTANT ── -->
-  <button id="aiChatBtn" onclick="toggleAIChat()" title="AI Activity Planner">🤖</button>
-  <div id="aiChatPanel">
+  <button id="mina-aiChatBtn" onclick="toggleAIChat()" title="AI Activity Planner">🤖</button>
+  <div id="mina-aiChatPanel">
     <div class="ai-chat-hdr">
       <div class="ai-chat-hdr-left">
         <div class="ai-chat-avatar">🧠</div>
@@ -2886,6 +2905,20 @@ const DEMO_KEYS = {
 
 // OWNER ACCESS — bypasses demo timer, blur, and all limits
 // Change this key to anything you want — keep it private
+// ═══ GUMROAD MAGIC REDIRECT ═══
+function handleGumroadRedirect() {
+  try{var p=new URLSearchParams(window.location.search),ref=p.get('ref'),tier=p.get('tier');
+  if(ref==='gumroad'&&tier&&TIERS[tier]){
+    window.history.replaceState({},'',window.location.pathname);
+    try{localStorage.setItem('lc_tier',tier);localStorage.setItem('lc_key','GUMROAD-'+tier.toUpperCase());localStorage.setItem('lc_licensed','true');}catch(e){}
+    _demoExpired=false;_pendingTier=tier;window._gumroadUnlock=tier;
+    setTimeout(function(){
+      if(typeof applyTier==='function'){applyTier(tier,'GUMROAD-'+tier.toUpperCase(),localStorage.getItem('lc_lead_email')||'');var dt=document.getElementById('demoTimer');if(dt)dt.classList.remove('active');try{localStorage.removeItem('lc_demo_expiry');}catch(e){}}
+    },300);
+    return true;
+  }}catch(e){}return false;
+}
+function checkSavedLicense(){try{var t=localStorage.getItem('lc_tier'),k=localStorage.getItem('lc_key'),l=localStorage.getItem('lc_licensed');if(t&&TIERS[t]&&l==='true')return{tier:t,key:k};}catch(e){}return null;}
 const OWNER_KEY = 'LAZYCREATOR-OWNER-2025';
 
 function checkOwnerKey(k){
@@ -5950,6 +5983,7 @@ async function activate(){
 function applyTier(tierName,key,email){
   if(!TIERS[tierName]){setErr('License recognized but tier not configured.');return}
   S.tier=tierName; S.level=TIERS[tierName].level; S.key=key; S.email=email;
+  if(key&&key.startsWith('GUMROAD-')){try{localStorage.setItem('lc_tier',tierName);localStorage.setItem('lc_key',key);localStorage.setItem('lc_licensed','true');}catch(e){}}
   // Force-close any modals that may be open (BFCache / back-navigation can restore open state)
   document.querySelectorAll('.modal-bg').forEach(m=>m.classList.remove('show'));
   // Hide gate + show app
@@ -5972,7 +6006,7 @@ function applyTier(tierName,key,email){
     // Init weather, theme and module backgrounds when app first shows
     if(!window._appInited){
       window._appInited = true;
-      initWeather();
+      initWeather(); setTimeout(function(){showWeatherModal();},200);
       initTheme();
       
     }
@@ -5999,7 +6033,7 @@ function diag(msg, color){
     if(d){ d.textContent = msg; d.style.color = color || '#16a34a'; }
   }catch(_){}
 }
-function tryDemo(tierName){
+function tryDemo(tierName){/*mina-ai-coach*/
   try{
     if(!TIERS[tierName]) return;
     _demoExpired = false;
@@ -7152,57 +7186,43 @@ function renderStats(){
 }
 
 function renderGrid(){
-  const grid=document.getElementById('grid');
-  let arr=getVisibleActivities();
-  // Cap applies globally across both brands — get unlocked IDs from full pool
+  const grid = document.getElementById('grid');
+  let arr = getVisibleActivities();
   const unlockedIds = getGlobalUnlockedIds();
-
   if(arr.length===0){
-    grid.innerHTML=`
-      <div class="empty">
-        <span class="empty-em">${S.tab==='saved'?'♥':'🔍'}</span>
-        <h3 class="empty-h">${S.tab==='saved'?'No saved activities yet':'No activities match'}</h3>
-        <p class="empty-p">${S.tab==='saved'?'Tap the heart on any activity to save it.':'Try clearing filters or searching different keywords.'}</p>
-      </div>`;
+    grid.innerHTML='<div class="empty"><span class="empty-em">'+(S.tab==='saved'?'♥':'🔍')+'</span><h3 class="empty-h">'+(S.tab==='saved'?'No saved activities yet':'No activities match')+'</h3><p class="empty-p">'+(S.tab==='saved'?'Tap the heart on any activity to save it.':'Try clearing filters or searching different keywords.')+'</p></div>';
     return;
   }
-
-  grid.innerHTML = arr.map(a=>{
-    const unlocked = unlockedIds.has(a.id);
-    const saved = S.saved.has(a.id);
-    const done = S.done.has(a.id);
-    const isNew = a.addedDate ? (Date.now()-new Date(a.addedDate).getTime()<14*24*60*60*1000) : false;
-    const tierName = ['','Starter','Pro','Elite','School'][a.tier];
-    const catObj = CATS.find(c=>c.id===a.cat) || {};
-    const catLabel = a.cat==='unboxed' ? (a.matName||'UnboxED') : (catObj.label || a.cat);
-    const catDisplay = a.cat==='unboxed' ? `${a.em} ${a.matName}` : `${catObj.em||''} ${catLabel}`;
-    // UnboxED uses material color; AdaptED uses per-category color; CampED forest; TeenagED purple
-    const cardClr = a.cat==='unboxed' ? (a.matColor||'#0891b2')
-                  : a.brand==='a' ? (catObj.color || 'var(--a-accent)')
-                  : a.brand==='c' ? 'var(--c-primary)'
-                  : a.brand==='r' ? (catObj.color || 'var(--r-primary)')
-                  : 'var(--t-primary)';
-    return `
-      <div class="card${done?' is-done':''}" data-id="${a.id}" data-catclr="1" data-energy="${a.energy||'med'}" style="--cardclr:${cardClr};position:relative" onclick="openActivity('${a.id}')">${isNew?'<span class="new-badge">NEW</span>':''}
-        ${done?'<span class="done-badge">✓ Done</span>':''}
-        <button class="heart${saved?' saved':''}" onclick="event.stopPropagation();toggleSave('${a.id}')">${saved?'♥':'♡'}</button>
-        <div class="card-top">
-          <div class="card-em">${a.em}</div>
-          <div class="card-meta">
-            <div class="card-cat" style="color:${cardClr};display:flex;align-items:center;gap:4px">${catDisplay}${S.search&&a.brand!==S.brand?'<span style="font-size:9px;font-weight:700;padding:1px 5px;border-radius:4px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.4);margin-left:auto;flex-shrink:0">'+({'a':'AdaptED','c':'CampED','t':'TeenagED','r':'RegulatED'}[a.brand]||'')+'</span>':''}</div>
-            <div class="card-title">${a.title}</div>
-          </div>
-        </div>
-        <div class="card-byline">by The Lazy Creator</div>
-        <p class="card-desc">${a.desc}</p>
-        <div class="card-tags">
-          <span class="tag">Age ${a.age}</span>
-          <span class="tag">${a.energy} energy</span>
-          <span class="tag tier ${TIERS[Object.keys(TIERS).find(k=>TIERS[k].level===a.tier)].cls}">${tierName}</span>
-        </div>
-        <button class="done-btn${done?' is-done':''}" onclick="event.stopPropagation();toggleDone('${a.id}')" title="${done?'Mark undone':'Mark done'}">${done?'✓':'○'}</button>
-      </div>`;
-  }).join('');
+  // ── Virtual Scrolling ──
+  VS.items=arr;calcRowH();
+  const st=VS.scrollTop;
+  const si=Math.max(0,Math.floor(st/VS.rowH)-VS.buf);
+  const ei=Math.min(arr.length,Math.ceil((st+(window.innerHeight||800))/VS.rowH)+VS.buf);
+  const vis=arr.slice(si,ei);
+  grid.style.cssText='position:relative;height:'+(arr.length*VS.rowH)+'px';
+  let h='';
+  for(let v=0;v<vis.length;v++){
+    const a=vis[v];const idx=si+v;
+    const saved=S.saved.has(a.id);const done=S.done.has(a.id);
+    const isNew=a.addedDate?(Date.now()-new Date(a.addedDate).getTime()<14*24*60*60*1000):false;
+    const tn=['','Starter','Pro','Elite','School'][a.tier];
+    const co=CATS.find(c=>c.id===a.cat)||{};const cl=a.cat==='unboxed'?(a.matName||'UnboxED'):(co.label||a.cat);
+    const cd=a.cat==='unboxed'?a.em+' '+a.matName:(co.em||'')+' '+cl;
+    const cc=a.cat==='unboxed'?(a.matColor||'#0891b2'):a.brand==='a'?(co.color||'var(--a-accent)'):a.brand==='c'?'var(--c-primary)':a.brand==='r'?(co.color||'var(--r-primary)'):'var(--t-primary)';
+    h+='<div class="card'+(done?' is-done':'')+'" data-id="'+a.id+'" data-energy="'+(a.energy||'med')+'" style="--cardclr:'+cc+';position:absolute;top:'+(idx*VS.rowH)+'px;left:0;right:0" onclick="openActivity(\''+a.id+'\')">'+(isNew?'<span class="new-badge">NEW</span>':'')+
+      (done?'<span class="done-badge">✓ Done</span>':'')+
+      '<button class="heart'+(saved?' saved':'')+'" onclick="event.stopPropagation();toggleSave(\''+a.id+'\')">'+(saved?'♥':'♡')+'</button>'+
+      '<div class="card-top"><div class="card-em">'+a.em+'</div><div class="card-meta"><div class="card-cat" style="color:'+cc+'">'+cd+'</div><div class="card-title">'+a.title+'</div></div></div>'+
+      '<div class="card-byline">by The Lazy Creator</div><p class="card-desc">'+a.desc+'</p>'+
+      '<div class="card-tags"><span class="tag">Age '+a.age+'</span><span class="tag">'+a.energy+' energy</span><span class="tag tier '+TIERS[Object.keys(TIERS).find(k=>TIERS[k].level===a.tier)].cls+'">'+tn+'</span></div>'+
+      '<button class="done-btn'+(done?' is-done':'')+'" onclick="event.stopPropagation();toggleDone(\''+a.id+'\')">'+(done?'✓':'○')+'</button></div>';
+  }
+  grid.innerHTML = h;
+  if(!VS.initialized){
+    VS.initialized=true;
+    const sc=document.getElementById('app');
+    if(sc) sc.addEventListener('scroll',function(){const nt=this.scrollTop||0;if(Math.abs(nt-VS.scrollTop)>VS.rowH/2){VS.scrollTop=nt;renderGrid();}},{passive:true});
+  }
 }
 
 // ACTIVITY MODAL
@@ -7407,6 +7427,72 @@ const WMO_DESC = {
 let _wxData = null;
 let _wxForecastOpen = false;
 let _wxLastFetch = 0;
+
+
+// ── WEATHER MODAL ──
+let _wxModalTimeout = null;
+function requestWeatherAccess(){
+  document.getElementById('weatherModal').classList.remove('show');
+  localStorage.removeItem('lc_weather_off');
+  if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(
+      pos => { localStorage.removeItem('lc_weather_denied'); fetchWeather(pos.coords.latitude, pos.coords.longitude); lcToast('🌤️ Weather enabled ✓'); },
+      err => { localStorage.setItem('lc_weather_denied','1'); setWeatherDenied(); lcToast('Location access denied — weather unavailable'); },
+      {timeout:10000, maximumAge:600000}
+    );
+  } else {
+    setWeatherFallback();
+    lcToast('Weather unavailable on this device');
+  }
+}
+function dismissWeatherModal(){
+  document.getElementById('weatherModal').classList.remove('show');
+  localStorage.setItem('lc_weather_off','1');
+  if(_wxModalTimeout){ clearTimeout(_wxModalTimeout); _wxModalTimeout=null; }
+  lcToast('Weather suggestions turned off — enable anytime from settings');
+}
+function showWeatherModal(){
+  if(localStorage.getItem('lc_weather_off')==='1') return;
+  if(localStorage.getItem('lc_weather_denied')==='1') return;
+  if(localStorage.getItem('lc_wx_modal_shown')) return;
+  localStorage.setItem('lc_wx_modal_shown','1');
+  const el = document.getElementById('weatherModal');
+  if(el) _wxModalTimeout = setTimeout(()=>el.classList.add('show'), 1500);
+}
+
+
+// ── WEATHER MODAL ──
+let _wxModalTimeout = null;
+function requestWeatherAccess(){
+  var m = document.getElementById("weatherModal");
+  if(m) m.classList.remove("show");
+  localStorage.removeItem("lc_weather_off");
+  if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(
+      function(pos){ localStorage.removeItem("lc_weather_denied"); fetchWeather(pos.coords.latitude, pos.coords.longitude); lcToast("\ud83c\udf24\ufe0f Weather enabled \u2713"); },
+      function(err){ localStorage.setItem("lc_weather_denied","1"); setWeatherDenied(); lcToast("Location access denied \u2014 weather unavailable"); },
+      {timeout:10000, maximumAge:600000}
+    );
+  } else {
+    setWeatherFallback();
+    lcToast("Weather unavailable on this device");
+  }
+}
+function dismissWeatherModal(){
+  var m = document.getElementById("weatherModal");
+  if(m) m.classList.remove("show");
+  localStorage.setItem("lc_weather_off","1");
+  if(_wxModalTimeout){ clearTimeout(_wxModalTimeout); _wxModalTimeout=null; }
+  lcToast("Weather suggestions turned off \u2014 enable anytime from settings");
+}
+function showWeatherModal(){
+  if(localStorage.getItem("lc_weather_off")==="1") return;
+  if(localStorage.getItem("lc_weather_denied")==="1") return;
+  if(localStorage.getItem("lc_wx_modal_shown")) return;
+  localStorage.setItem("lc_wx_modal_shown","1");
+  var el = document.getElementById("weatherModal");
+  if(el) _wxModalTimeout = setTimeout(function(){ el.classList.add("show"); }, 1500);
+}
 
 function initWeather(){
   updateDateDisplay();
@@ -7842,7 +7928,7 @@ function localAIPlanner(msg){
 
   // Shuffle helper
   function shuffle(arr){ return arr.sort(()=>Math.random()-0.5); }
-  function pick(n, filter){ const f=filter?pool.filter(filter):pool; return shuffle([...f]).slice(0,n); }
+  function _minaPick(n,f){const p=f?pool.filter(f):pool;return shuffle([...p]).slice(0,n);}
   function card(a){ return `**${a.em} ${a.title}** _(Age ${a.age} · ${a.energy||'medium'} energy)_
 ${a.desc}`; }
   function tip(){ return '💡 Follow the child’s lead and let curiosity guide the session.'; }
@@ -8683,6 +8769,9 @@ function spNextAct(){
   spLoadAct(spActIdx);
 }
 
+
+// ── GUMROAD REDIRECT + SAVED LICENSE CHECK ──
+(function(){if(handleGumroadRedirect&&handleGumroadRedirect())return;var sv=checkSavedLicense&&checkSavedLicense();if(sv&&sv.tier&&typeof applyTier==='function'){_demoExpired=false;setTimeout(function(){applyTier(sv.tier,sv.key||'SAVED',localStorage.getItem('lc_lead_email')||'');var dt=document.getElementById('demoTimer');if(dt)dt.classList.remove('active');try{localStorage.removeItem('lc_demo_expiry');}catch(e){}},300);}})();
 // ── SUPPLY ENTRY FROM URL ──
 (function(){
   const params = new URLSearchParams(window.location.search);
@@ -8804,6 +8893,20 @@ function printActivity(id){
   `);
   w.document.close();
   setTimeout(()=>w.print(),300);
+}
+
+
+// ── CURRICULUM LANE LABEL SWITCHING ──
+function saveOriginalLabels(){if(window._origLabels)return;window._origLabels={};CATS.forEach(function(c){window._origLabels[c.id]=c.label;});}
+function applyP2LLabels(){
+  saveOriginalLabels();var p2l={'finemotor':'Fine Motor','movement':'Gross Motor','sensory':'Sensory Processing','art':'Creative Expression','music':'Music & Rhythm','blocks':'Spatial Awareness','literacy':'Communication & Language','math':'Numeracy & Logic','science':'Inquiry & Discovery','social':'Social-Emotional Learning','cooking':'Practical Life','drama':'Dramatic Play','yoga':'Body Awareness','puppet':'Storytelling & Literacy','gardening':'Nature & Ecology','steam':'STEAM Exploration','selfcare':'Self-Regulation','holiday':'Cultural Celebrations','language':'Oral Communication','spelling':'Phonological Awareness','logic':'Critical Thinking','money':'Economic Literacy','time':'Temporal Awareness','patterns':'Pattern Recognition','photography':'Visual Literacy'};
+  CATS.forEach(function(c){if(p2l[c.id])c.label=p2l[c.id];});
+  if(typeof initFilters==='function')initFilters();if(typeof render==='function')render();
+}
+function applySBLabels(){
+  saveOriginalLabels();var sb={'literacy':'Language & Literacy','math':'Mathematics','science':'Science & Technology','social':'Social Studies','art':'The Arts','music':'Music Education','movement':'Health & PE','language':'French Immersion','steam':'STEM Integration','assessment':'Assessment & Evaluation','history':'Social Studies — History','geography':'Social Studies — Geography','coding':'Computer Science','photography':'Media Literacy','finemotor':'Fine Motor Skills','sensory':'Self-Regulation','blocks':'Spatial Sense','drama':'Drama & Dance','cooking':'Health & Nutrition','gardening':'Environmental Education','selfcare':'SEL','family':'Family Studies','money':'Financial Literacy','time':'Measurement — Time','patterns':'Patterning & Algebra','logic':'Mathematical Reasoning'};
+  CATS.forEach(function(c){if(sb[c.id])c.label=sb[c.id];});
+  if(typeof initFilters==='function')initFilters();if(typeof render==='function')render();
 }
 
 // INIT — robust event wiring (works under strict CSP, in iframes,
@@ -9194,6 +9297,9 @@ let demoTimerInterval = null;
 
 function startDemoTimer(){
   if(S.licensed) return;
+  // Bulletproof: check existing expiry before writing new one
+  const existing = parseInt(localStorage.getItem('lc_demo_expiry')||'0');
+  if(existing > Date.now()){ runDemoCountdown(existing); return; }
   const dur = (DEMO_DURATIONS[S.tier||'starter']||150)*1000;
   const expiry = Date.now()+dur;
   localStorage.setItem('lc_demo_expiry', expiry);
