@@ -2598,8 +2598,8 @@ html,body,#app{
     <div id="collectionsWrap" class="coll-list"></div>
   </div>
   <!-- ── AI PLANNING ASSISTANT ── -->
-  <button id="mina-aiChatBtn" onclick="toggleAIChat()" title="AI Activity Planner">🤖</button>
-  <div id="mina-aiChatPanel">
+  <button id="aiChatBtn" onclick="toggleAIChat()" title="AI Activity Planner">🤖</button>
+  <div id="aiChatPanel">
     <div class="ai-chat-hdr">
       <div class="ai-chat-hdr-left">
         <div class="ai-chat-avatar">🧠</div>
@@ -7495,39 +7495,6 @@ function showWeatherModal(){
   if(el) _wxModalTimeout = setTimeout(()=>el.classList.add('show'), 1500);
 }
 
-
-// ── WEATHER MODAL ──
-let _wxModalTimeout = null;
-function requestWeatherAccess(){
-  var m = document.getElementById("weatherModal");
-  if(m) m.classList.remove("show");
-  localStorage.removeItem("lc_weather_off");
-  if(navigator.geolocation){
-    navigator.geolocation.getCurrentPosition(
-      function(pos){ localStorage.removeItem("lc_weather_denied"); fetchWeather(pos.coords.latitude, pos.coords.longitude); lcToast("\ud83c\udf24\ufe0f Weather enabled \u2713"); },
-      function(err){ localStorage.setItem("lc_weather_denied","1"); setWeatherDenied(); lcToast("Location access denied \u2014 weather unavailable"); },
-      {timeout:10000, maximumAge:600000}
-    );
-  } else {
-    setWeatherFallback();
-    lcToast("Weather unavailable on this device");
-  }
-}
-function dismissWeatherModal(){
-  var m = document.getElementById("weatherModal");
-  if(m) m.classList.remove("show");
-  localStorage.setItem("lc_weather_off","1");
-  if(_wxModalTimeout){ clearTimeout(_wxModalTimeout); _wxModalTimeout=null; }
-  lcToast("Weather suggestions turned off \u2014 enable anytime from settings");
-}
-function showWeatherModal(){
-  if(localStorage.getItem("lc_weather_off")==="1") return;
-  if(localStorage.getItem("lc_weather_denied")==="1") return;
-  if(localStorage.getItem("lc_wx_modal_shown")) return;
-  localStorage.setItem("lc_wx_modal_shown","1");
-  var el = document.getElementById("weatherModal");
-  if(el) _wxModalTimeout = setTimeout(function(){ el.classList.add("show"); }, 1500);
-}
 
 function initWeather(){
   updateDateDisplay();
