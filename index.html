@@ -12,6 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="elite.css">
 
 <style>
 :root{
@@ -1746,7 +1747,7 @@ footer{background:rgba(0,0,0,0.55)!important;border-top:1px solid rgba(0,245,255
           <span class="faq-q-text">Can I see the dashboard before I buy?</span>
           <span class="faq-q-icon">+</span>
         </summary>
-        <p class="faq-a">Yes. The <a href="/app" style="color:var(--a);text-decoration:underline;text-underline-offset:3px">live dashboard</a> has a one-click demo button for each tier — no signup, no card. Click around, switch brands, open activity cards, see exactly what you're paying for. The activity card on this page is the real component, randomly pulled from the catalog.</p>
+        <p class="faq-a">Yes. The <a href="/app?demo=starter" style="color:var(--a);text-decoration:underline;text-underline-offset:3px">live dashboard</a> has a one-click demo button for each tier — no signup, no card. Click around, switch brands, open activity cards, see exactly what you're paying for. The activity card on this page is the real component, randomly pulled from the catalog.</p>
       </details>
 
       <details class="faq-item">
@@ -1897,7 +1898,7 @@ footer{background:rgba(0,0,0,0.55)!important;border-top:1px solid rgba(0,245,255
       </div>
       <div class="footer-col">
         <h5>Connect</h5>
-        <a href="/app">Open dashboard →</a>
+        <a href="/app?demo=starter">Open dashboard →</a>
         <a data-contact href="mailto:thelazycreatorco@gmail.com">thelazycreatorco@gmail.com</a>
       </div>
     </div>
@@ -1918,11 +1919,11 @@ footer{background:rgba(0,0,0,0.55)!important;border-top:1px solid rgba(0,245,255
 const GUMROAD_BASE = 'https://tatianna.gumroad.com/l'; // ← replace with YOUR Gumroad username
 const SLUGS = {
   starter: 'PASTE_STARTER_SLUG',   // ← e.g. 'abc123'
-  pro:     'PASTE_PRO_SLUG',
-  elite:   'PASTE_ELITE_SLUG',
-  school:  'PASTE_SCHOOL_SLUG',
+  pro:     'kbylil',
+  elite:   'zhmhbv',
+  school:  'muyuj',
 };
-const CONTACT_EMAIL = 'PASTE_YOUR_EMAIL_HERE'; // ← e.g. 'tatianna@adapted.com'
+const CONTACT_EMAIL = 'thelazycreatorco@gmail.com'; // ← e.g. 'tatianna@adapted.com'
 /* ════════════════════════════════════════════════════════════ */
 
 
@@ -2129,7 +2130,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 
 <!-- Floating dashboard button -->
-<a href="/app" class="float-dashboard">
+<a href="/app?demo=starter" class="float-dashboard">
   Open the Dashboard <span class="fd-pill">Free demo</span>
 </a>
 
