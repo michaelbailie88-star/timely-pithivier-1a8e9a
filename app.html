@@ -6038,11 +6038,12 @@ function tryDemo(tierName){/*mina-ai-coach*/
     if(!TIERS[tierName]) return;
     _demoExpired = false;
     _pendingTier = tierName;
-    // Always clear onboarded flag so questions always show on fresh demo
-    try{ localStorage.removeItem('lc_onboarded'); }catch(e){}
     applyTier(tierName, 'DEMO-'+tierName.toUpperCase().slice(0,3), localStorage.getItem('lc_lead_email')||'demo@example.com');
     startDemoTimer();
-    setTimeout(()=>showOnboarding(), 1000);
+    // Show onboarding only if not already onboarded
+    if(!localStorage.getItem('lc_onboarded')){
+      setTimeout(function(){showOnboarding();}, 1000);
+    }
   }catch(err){ console.error('tryDemo:', err); }
 }
 
@@ -9303,6 +9304,7 @@ function startDemoTimer(){
   const dur = (DEMO_DURATIONS[S.tier||'starter']||150)*1000;
   const expiry = Date.now()+dur;
   localStorage.setItem('lc_demo_expiry', expiry);
+  // Only increment uses when starting a NEW timer (not when reusing existing)
   const uses = parseInt(localStorage.getItem('lc_demo_used')||'0')+1;
   localStorage.setItem('lc_demo_used', uses);
   const timerEl = document.getElementById('demoTimer');
