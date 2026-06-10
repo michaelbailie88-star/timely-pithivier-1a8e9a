@@ -8774,7 +8774,6 @@ function spNextAct(){
 
 // ── GUMROAD REDIRECT + SAVED LICENSE CHECK ──
 (function(){if(handleGumroadRedirect&&handleGumroadRedirect())return;var sv=checkSavedLicense&&checkSavedLicense();if(sv&&sv.tier&&typeof applyTier==='function'){_demoExpired=false;setTimeout(function(){applyTier(sv.tier,sv.key||'SAVED',localStorage.getItem('lc_lead_email')||'');var dt=document.getElementById('demoTimer');if(dt)dt.classList.remove('active');try{localStorage.removeItem('lc_demo_expiry');}catch(e){}},300);}})();
-// ── SUPPLY ENTRY FROM URL ──
 (function(){
   const params = new URLSearchParams(window.location.search);
   // Handle incoming report from supply teacher
@@ -9421,6 +9420,18 @@ function setLang(code){
       trackAct('DEMO-' + tierName.toUpperCase().slice(0,3));
       return origTryDemo.apply(this, arguments);
     };
+  }
+  // 3. Magic Redirects
+  if(['starter','pro','elite','school'].includes(qTier) && qRef !== 'gumroad'){
+    setTimeout(() => {
+      if(typeof window.tryDemo === 'function'){
+        window.tryDemo(qTier);
+        const url = new URL(location);
+        url.searchParams.delete('demo');
+        url.searchParams.delete('tier');
+        history.replaceState({}, '', url);
+      }
+    }, 300);
   }
 })();
 </script>
